@@ -1,47 +1,35 @@
-# XXX Ontology
+# Calidad del Aire
 
-The XXX ontology describes the domain of XXX
+Este repositorio reutiliza el patrón general definido en la [Ontología de Medioambiente](https://github.com/oeg-upm/edint-ontologia-medio-ambiente/tree/a09f6a58ac148cebdec8d7ac49f0ba707cbda6ac) para representar estaciones, sensores y observaciones medioambientales. En dicha ontología, se adopta una modelización común basada en una plataforma de sensores (`SensorPlatform`), sensores medioambientales (`EnvironmentalSensor`) y observaciones medioambientales (`EnvironmentalObservation`).
 
+En este caso, dicho patrón se aplica específicamente al dominio de la calidad del aire. Para ello, la especialización no se realiza a través de vocabularios controlados SKOS que permiten clasificar y restringir semánticamente los elementos del modelo.
 
-# Purpose and scope of the vocabulary
+En particular:
 
-The purpose of the XXX ontology is to YYYY. 
-The scope of the XXX ontology is limited to ZZZ.
+- el tipo de sensor se expresa mediante la propiedad `edintmed:hasSensorType`, cuyos valores son conceptos SKOS pertenecientes al esquema `SensorTypes`. Para el caso de calidad del aire, los sensores se clasifican mediante el concepto `AirQualitySensor`;
+- las propiedades observadas se representan mediante conceptos del esquema `SensorVariables`, por ejemplo `NO2Concentration`, `O3Concentration` o `PM10Concentration`;
+- la característica de interés observada se representa mediante conceptos del esquema `FeaturesOfInterest`, como por ejemplo `Air` o `ParticulateMatter`.
 
-# Ontology prefix and namespace
+Este enfoque permite reutilizar una misma estructura ontológica para distintos dominios medioambientales, manteniendo la especialización del caso de calidad del aire a través de los KOS y facilitando además la definición de reglas de consistencia y validación.
 
-The XXX ontology prefix is: XXX and it is published under the namespace: https://webdomain.ext/def/domain/subdomain# 
+En la carpeta [`./examples`](./examples) se incluye una serie de ejemplos que muestran cómo utilizar la Ontología de Medioambiente junto con los vocabularios SKOS para la especialización en calidad del aire. Estos ejemplos ilustran la descripción de estaciones, sensores de calidad del aire, propiedades observadas y observaciones asociadas.
 
-# Ontology Conceptualization Image
+# Estructura del repositorio (Repository structure)
 
-Every ontology development repository should include, in this root README, a visual representation of the ontology conceptualization.
-This image helps users and contributors quickly understand the ontology’s structure, key concepts, and relationships.
-- The image should be located in the conceptualization folder.
-- Accepted formats: .svg, .png, or .drawio.
-- It should be referenced in this README using Markdown syntax, for example:
+El repositorio contiene las siguientes carpetas:
 
-![Ontology Conceptualization Diagram](diagrams/diagram.png)
-
-# Reposity structure
-
-The repository should contain (at least) the following folders:
-
-| Folder | Description |
-|--------|--------------|
-| **diagrams/** | Stores diagrams and other resources representing the conceptual model of the ontology (e.g., class hierarchies, relationships). |
-| **documentation/** | Stores the HTML or human oriented documentation of the ontology and related artefacts. |
+| Folder              | Description                                                                                         |
+| ------------------- | --------------------------------------------------------------------------------------------------- |
 | **examples/** | Includes examples that demonstrate how to instantiate or apply the ontology in real data scenarios. |
-| **kos/** | Stores controlled vocabularies or KOS implementation, usually SKOS implementations in rdf. |
-| **ontology/** | Contains the actual ontology implementation files in formats such as `.owl`, `.rdf`, `.ttl`, or `.jsonld`. |
-| **requirements/** | Contains all documents used to define the ontology’s requirements: data example, competency questions, functional requirements, use cases, etc. |
-| **shapes/** | Contains the SHACL shapes used to define and validate ontology constraints. |
 
-# Project maintenance
+# Mantenimiento y evolución (Project maintenance)
 
-To manage those incidents or suggested improvements with respect to the vocabulary, we recommend you to follow
-the guides provided in [Issues Management](https://github.com/nombre-repositorio/wiki/issues-management) to
-generate an issue (work in progress)
+Para manejar las incidencias o mejoras sugeridas con respecto a la ontología, recomendamos seguir las guía proporcionadas en ([Issues Management](https://github.com/telefonicasc/edint-ontologia-suministro/issues)) para generar una incidencia (trabajo en progreso).
 
-# Funding
+# Financiación (Funding)
 
-Add here project funding and needed images.
+Esta ontología ha sido desarrollada en el contexto del Espacio de Datos para las Infraestructuras Urbanas Inteligentes ([EDINT](https://edint.es/)).
+
+```
+![Logos](EDINT_UE_V-Color.png)
+```

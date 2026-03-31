@@ -1,0 +1,56 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix schema: <http://schema.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix edintmed: <http://vocab.linkeddata.es/datosabiertos/def/medioambiente/> .
+@prefix edintkos-vars: <http://vocab.linkeddata.es/datosabiertos/kos/edint/variables/> .
+@prefix edintkos-foi: <http://vocab.linkeddata.es/datosabiertos/kos/edint/foi/> .
+@prefix edintkos-sensortypes: <http://vocab.linkeddata.es/datosabiertos/kos/edint/sensortypes/> .
+@prefix ex: <http://example.org/air-quality/> .
+
+ex:Station_AQ_003 a edintmed:SensorPlatform ;
+    rdfs:label "Estación de calidad del aire 3"@es ;
+    dct:identifier "AQ-003" ;
+    sosa:hosts ex:Sensor_AQ_003 .
+
+ex:Sensor_AQ_003 a edintmed:EnvironmentalSensor ;
+    rdfs:label "Sensor de calidad del aire 3"@es ;
+    dct:identifier "AQS-003" ;
+    schema:manufacturer ex:Manufacturer_UrbanLab ;
+    edintmed:hasSensorType edintkos-sensortypes:AirQualitySensor ;
+    sosa:isHostedBy ex:Station_AQ_003 ;
+    sosa:observes edintkos-vars:O3Concentration ,
+                  edintkos-vars:BenzeneConcentration ,
+                  edintkos-vars:TolueneConcentration .
+
+ex:Observation_AQ_003_O3 a edintmed:EnvironmentalObservation ;
+    rdfs:label "Observación de O3"@es ;
+    sosa:madeBySensor ex:Sensor_AQ_003 ;
+    sosa:observedProperty edintkos-vars:O3Concentration ;
+    sosa:hasFeatureOfInterest edintkos-foi:Air ;
+    sosa:hasSimpleResult "45.0"^^xsd:decimal ;
+    qudt:unit unit:MicroGM-PER-M3 .
+
+ex:Observation_AQ_003_Benzene a edintmed:EnvironmentalObservation ;
+    rdfs:label "Observación de benceno"@es ;
+    sosa:madeBySensor ex:Sensor_AQ_003 ;
+    sosa:observedProperty edintkos-vars:BenzeneConcentration ;
+    sosa:hasFeatureOfInterest edintkos-foi:Air ;
+    sosa:hasSimpleResult "0.8"^^xsd:decimal ;
+    qudt:unit unit:MicroGM-PER-M3 .
+
+ex:Observation_AQ_003_Toluene a edintmed:EnvironmentalObservation ;
+    rdfs:label "Observación de tolueno"@es ;
+    sosa:madeBySensor ex:Sensor_AQ_003 ;
+    sosa:observedProperty edintkos-vars:TolueneConcentration ;
+    sosa:hasFeatureOfInterest edintkos-foi:Air ;
+    sosa:hasSimpleResult "3.5"^^xsd:decimal ;
+    qudt:unit unit:MicroGM-PER-M3 .
+
+ex:Manufacturer_UrbanLab a schema:Organization ;
+    rdfs:label "UrbanLab Sensors"@en ;
+    rdfs:label "UrbanLab Sensors"@es .

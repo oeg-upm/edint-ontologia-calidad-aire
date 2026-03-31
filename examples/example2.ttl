@@ -1,0 +1,47 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix schema: <http://schema.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix edintmed: <http://vocab.linkeddata.es/datosabiertos/def/medioambiente/> .
+@prefix edintkos-vars: <http://vocab.linkeddata.es/datosabiertos/kos/edint/variables/> .
+@prefix edintkos-foi: <http://vocab.linkeddata.es/datosabiertos/kos/edint/foi/> .
+@prefix edintkos-sensortypes: <http://vocab.linkeddata.es/datosabiertos/kos/edint/sensortypes/> .
+@prefix ex: <http://example.org/air-quality/> .
+
+ex:Station_AQ_002 a edintmed:SensorPlatform ;
+    rdfs:label "Estación de calidad del aire 2"@es ;
+    dct:identifier "AQ-002" ;
+    sosa:hosts ex:Sensor_AQ_002 .
+
+ex:Sensor_AQ_002 a edintmed:EnvironmentalSensor ;
+    rdfs:label "Sensor de calidad del aire 2"@es ;
+    dct:identifier "AQS-002" ;
+    schema:manufacturer ex:Manufacturer_ParticleSense ;
+    edintmed:hasSensorType edintkos-sensortypes:AirQualitySensor ;
+    sosa:isHostedBy ex:Station_AQ_002 ;
+    sosa:observes edintkos-vars:PM10Concentration ,
+                  edintkos-vars:PM25Concentration .
+
+ex:Observation_AQ_002_PM10 a edintmed:EnvironmentalObservation ;
+    rdfs:label "Observación de PM10"@es ;
+    sosa:madeBySensor ex:Sensor_AQ_002 ;
+    sosa:observedProperty edintkos-vars:PM10Concentration ;
+    sosa:hasFeatureOfInterest edintkos-foi:ParticulateMatter ;
+    sosa:hasSimpleResult "18.0"^^xsd:decimal ;
+    qudt:unit unit:MicroGM-PER-M3 .
+
+ex:Observation_AQ_002_PM25 a edintmed:EnvironmentalObservation ;
+    rdfs:label "Observación de PM2.5"@es ;
+    sosa:madeBySensor ex:Sensor_AQ_002 ;
+    sosa:observedProperty edintkos-vars:PM25Concentration ;
+    sosa:hasFeatureOfInterest edintkos-foi:ParticulateMatter ;
+    sosa:hasSimpleResult "5.0"^^xsd:decimal ;
+    qudt:unit unit:MicroGM-PER-M3 .
+
+ex:Manufacturer_ParticleSense a schema:Organization ;
+    rdfs:label "ParticleSense"@en ;
+    rdfs:label "ParticleSense"@es .

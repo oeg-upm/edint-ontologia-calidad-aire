@@ -1,0 +1,58 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix schema: <http://schema.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix edintmed: <http://vocab.linkeddata.es/datosabiertos/def/medioambiente/> .
+@prefix edintkos-vars: <http://vocab.linkeddata.es/datosabiertos/kos/edint/variables/> .
+@prefix edintkos-foi: <http://vocab.linkeddata.es/datosabiertos/kos/edint/foi/> .
+@prefix edintkos-sensortypes: <http://vocab.linkeddata.es/datosabiertos/kos/edint/sensortypes/> .
+@prefix ex: <http://example.org/air-quality/> .
+
+ex:Station_AQ_001 a edintmed:SensorPlatform ;
+    rdfs:label "Estación de calidad del aire 1"@es ;
+    rdfs:label "Air quality station 1"@en ;
+    dct:identifier "AQ-001" ;
+    sosa:hosts ex:Sensor_AQ_001 .
+
+ex:Sensor_AQ_001 a edintmed:EnvironmentalSensor ;
+    rdfs:label "Sensor de calidad del aire 1"@es ;
+    rdfs:label "Air quality sensor 1"@en ;
+    dct:identifier "AQS-001" ;
+    schema:manufacturer ex:Manufacturer_AirTech ;
+    edintmed:hasSensorType edintkos-sensortypes:AirQualitySensor ;
+    sosa:isHostedBy ex:Station_AQ_001 ;
+    sosa:observes edintkos-vars:NO2Concentration ,
+                  edintkos-vars:NOConcentration ,
+                  edintkos-vars:NOxConcentration .
+
+ex:Observation_AQ_001_NO2 a edintmed:EnvironmentalObservation ;
+    rdfs:label "Observación de NO2"@es ;
+    sosa:madeBySensor ex:Sensor_AQ_001 ;
+    sosa:observedProperty edintkos-vars:NO2Concentration ;
+    sosa:hasFeatureOfInterest edintkos-foi:Air ;
+    sosa:hasSimpleResult "26.0"^^xsd:decimal ;
+    qudt:unit unit:MicroGM-PER-M3 .
+
+ex:Observation_AQ_001_NO a edintmed:EnvironmentalObservation ;
+    rdfs:label "Observación de NO"@es ;
+    sosa:madeBySensor ex:Sensor_AQ_001 ;
+    sosa:observedProperty edintkos-vars:NOConcentration ;
+    sosa:hasFeatureOfInterest edintkos-foi:Air ;
+    sosa:hasSimpleResult "3.0"^^xsd:decimal ;
+    qudt:unit unit:MicroGM-PER-M3 .
+
+ex:Observation_AQ_001_NOX a edintmed:EnvironmentalObservation ;
+    rdfs:label "Observación de NOx"@es ;
+    sosa:madeBySensor ex:Sensor_AQ_001 ;
+    sosa:observedProperty edintkos-vars:NOxConcentration ;
+    sosa:hasFeatureOfInterest edintkos-foi:Air ;
+    sosa:hasSimpleResult "50.0"^^xsd:decimal ;
+    qudt:unit unit:MicroGM-PER-M3 .
+
+ex:Manufacturer_AirTech a schema:Organization ;
+    rdfs:label "AirTech Instruments"@en ;
+    rdfs:label "Instrumentos AirTech"@es .
