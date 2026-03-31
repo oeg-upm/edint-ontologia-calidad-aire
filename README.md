@@ -16,11 +16,12 @@ En la carpeta [`./examples`](./examples) se incluye una serie de ejemplos que mu
 
 # Estructura del repositorio (Repository structure)
 
-El repositorio contiene las siguientes carpetas:
+| Folder | Description |
+|--------|--------------|
+| **examples/** | Incluye ejemplos que demuestran cómo instanciar o aplicar la ontología en escenarios de datos reales. |
+| **shapes/** | Contiene los SHACL utilizadas para definir y validar las restricciones de la ontología.  |
 
-| Folder              | Description                                                                                         |
-| ------------------- | --------------------------------------------------------------------------------------------------- |
-| **examples/** | Includes examples that demonstrate how to instantiate or apply the ontology in real data scenarios. |
+
 
 # Mantenimiento y evolución (Project maintenance)
 
@@ -30,6 +31,6 @@ Para manejar las incidencias o mejoras sugeridas con respecto a la ontología, r
 
 Esta ontología ha sido desarrollada en el contexto del Espacio de Datos para las Infraestructuras Urbanas Inteligentes ([EDINT](https://edint.es/)).
 
-```
+
 ![Logos](EDINT_UE_V-Color.png)
-```
+
