@@ -1,0 +1,63 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix schema: <http://schema.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix edintmed: <http://vocab.linkeddata.es/datosabiertos/def/medioambiente/> .
+@prefix edintkos-vars: <http://vocab.linkeddata.es/datosabiertos/kos/edint/variables/> .
+@prefix edintkos-foi: <http://vocab.linkeddata.es/datosabiertos/kos/edint/foi/> .
+@prefix edintkos-sensortypes: <http://vocab.linkeddata.es/datosabiertos/kos/edint/sensortypes/> .
+@prefix ex: <http://example.org/air-quality/> .
+
+ex:Station_AQ_004 a edintmed:SensorPlatform ;
+    rdfs:label "Estación de calidad del aire 4"@es ;
+    dct:identifier "AQ-004" ;
+    sosa:hosts ex:Sensor_AQ_004 ,
+               ex:Sensor_AQ_005 .
+
+ex:Sensor_AQ_004 a edintmed:EnvironmentalSensor ;
+    rdfs:label "Sensor de calidad del aire 4"@es ;
+    dct:identifier "AQS-004" ;
+    schema:manufacturer ex:Manufacturer_MetroAir ;
+    edintmed:hasSensorType edintkos-sensortypes:AirQualitySensor ;
+    sosa:isHostedBy ex:Station_AQ_004 ;
+    sosa:observes edintkos-vars:NO2Concentration ,
+                  edintkos-vars:O3Concentration ,
+                  edintkos-vars:SO2Concentration .
+
+ex:Sensor_AQ_005 a edintmed:EnvironmentalSensor ;
+    rdfs:label "Sensor de calidad del aire 5"@es ;
+    dct:identifier "AQS-005" ;
+    schema:manufacturer ex:Manufacturer_MetroAir ;
+    edintmed:hasSensorType edintkos-sensortypes:AirQualitySensor ;
+    sosa:isHostedBy ex:Station_AQ_005 ;
+    sosa:observes edintkos-vars:PM10Concentration ,
+                  edintkos-vars:PM25Concentration .
+
+ex:Observation_AQ_004_NO2 a edintmed:EnvironmentalObservation ;
+    sosa:madeBySensor ex:Sensor_AQ_004 ;
+    sosa:observedProperty edintkos-vars:NO2Concentration ;
+    sosa:hasFeatureOfInterest edintkos-foi:Air ;
+    sosa:hasSimpleResult "37.0"^^xsd:decimal ;
+    qudt:unit unit:MicroGM-PER-M3 .
+
+ex:Observation_AQ_004_O3 a edintmed:EnvironmentalObservation ;
+    sosa:madeBySensor ex:Sensor_AQ_004 ;
+    sosa:observedProperty edintkos-vars:O3Concentration ;
+    sosa:hasFeatureOfInterest edintkos-foi:Air ;
+    sosa:hasSimpleResult "45.0"^^xsd:decimal ;
+    qudt:unit unit:MicroGM-PER-M3 .
+
+ex:Observation_AQ_005 a edintmed:EnvironmentalObservation ;
+    sosa:madeBySensor ex:Sensor_AQ_005 ;
+    sosa:observedProperty edintkos-vars:PM10Concentration ;
+    sosa:hasFeatureOfInterest edintkos-foi:ParticulateMatter ;
+    sosa:hasSimpleResult "23.0"^^xsd:decimal ;
+    qudt:unit unit:MicroGM-PER-M3 .
+
+ex:Manufacturer_MetroAir a schema:Organization ;
+    rdfs:label "MetroAir Monitoring Systems"@en ;
+    rdfs:label "Sistemas de Monitorización MetroAir"@es .
