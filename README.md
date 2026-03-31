@@ -1,4 +1,5 @@
-# Calidad del Aire
+# # Ontología EDINT de Sensores Medioambientales, caso Calidad del Aire (EDINT Environmental Sensors Ontology)
+
 
 Este repositorio reutiliza el patrón general definido en la [Ontología de Medioambiente](https://github.com/oeg-upm/edint-ontologia-medio-ambiente/tree/a09f6a58ac148cebdec8d7ac49f0ba707cbda6ac) para representar estaciones, sensores y observaciones medioambientales. En dicha ontología, se adopta una modelización común basada en una plataforma de sensores (`SensorPlatform`), sensores medioambientales (`EnvironmentalSensor`) y observaciones medioambientales (`EnvironmentalObservation`).
 
@@ -19,6 +20,7 @@ En la carpeta [`./examples`](./examples) se incluye una serie de ejemplos que mu
 | Folder | Description |
 |--------|--------------|
 | **examples/** | Incluye ejemplos que demuestran cómo instanciar o aplicar la ontología en escenarios de datos reales. |
+| **mappings/** | Incluye mappings RML que ejemplifican la transformación de orígenes de datos en datos enlazados. |
 | **shapes/** | Contiene los SHACL utilizadas para definir y validar las restricciones de la ontología.  |
 
 
